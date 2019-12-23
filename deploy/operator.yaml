@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: react
+  template:
+    metadata:
+      labels:
+        name: react
+    spec:
+      serviceAccountName: react
+      containers:
+        - name: react
+          # Replace this with the built image name
+          image: mayursuccessive/react
+          command:
+          - react
+          imagePullPolicy: Always
+          env:
+            - name: WATCH_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: OPERATOR_NAME
+              value: "react"

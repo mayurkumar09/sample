@@ -1,0 +1,23 @@
+apiVersion: app.com/v1
+kind: Mayurkind
+metadata:
+  name: example-mayurkind
+spec:
+  # Add fields here
+  size: 3
+
+
+
+apiVersion: app.com/v1
+kind: Mayurkind
+metadata:
+  name: example-mayurkind2
+spec:
+  # Add fields here
+  replicas: 2
+  memory: 
+    request: 128Mi
+    limit: 512Mi
+  cpu: 
+    request: 300m
+    limit: 2000
